@@ -1,8 +1,7 @@
 # Swiggy
 User Management:
 1.User Registration
-2.User Authentication
-3.User Profile Management
+2.User Login
 
 Restaurant Management:
 1.Restaurant Listing
