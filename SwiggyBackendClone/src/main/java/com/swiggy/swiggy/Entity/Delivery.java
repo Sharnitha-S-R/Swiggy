@@ -12,6 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 
 public class Delivery {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long deliveryId;
