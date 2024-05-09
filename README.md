@@ -1,5 +1,7 @@
 **Welcome to the Swiggy Backend Cloning Project!**
+
 **Introduction**
+
 Welcome to the Swiggy Backend Cloning project! This repository houses the backend code for a replicated version of Swiggy's food delivery platform, built entirely using Java SQL. Our objective is to construct a robust backend infrastructure that powers the core functionalities of a food delivery service, including user authentication, restaurant management, order processing, and delivery logistics.
 
 Utilizing Java's versatility and SQL for database management, we're crafting a scalable and efficient backend solution. Our emphasis lies in ensuring the seamless flow of operations, from user registration to order delivery, while maintaining the integrity and security of user data.
@@ -8,11 +10,14 @@ Join us as we embark on this journey to replicate Swiggy's backend, leveraging t
 
 
 
-**Development Environment
-IntelliJ IDEA**
+**Development Environment**
+
+**IntelliJ IDEA**
+
 IntelliJ IDEA serves as the primary Integrated Development Environment (IDE) for this project. Renowned for its comprehensive features and robust support for Node.js development, IntelliJ IDEA provides a conducive environment for writing, debugging, and testing backend code. Its seamless integration with Node.js and extensive plugin ecosystem enhance developer productivity and code quality.
 
 **Postman**
+
 Postman is utilized for API testing and documentation purposes. With its user-friendly interface and powerful features, Postman simplifies the process of creating and executing HTTP requests. It allows developers to test API endpoints, inspect responses, and generate comprehensive documentation effortlessly. Postman's collaboration capabilities enable effective communication and coordination among team members during the development and testing phases.
 
 **Project Objectives**
@@ -36,28 +41,37 @@ To install Postman [https://dev.mysql.com/doc/refman/8.3/en/windows-installation
 To install Spring boot initializer [https://start.spring.io/]
 
 **Features**
+
 User Authentication:
+
 Fields: username, email, password
 
 Restaurant Management:
+
 Fields: restaurant name, address, contact information, menu items
 
 Order Placement and Tracking:
+
 Fields: user ID, restaurant ID, items ordered, order status
 
 Payment Integration:
+
 Fields: payment method, transaction ID, payment status
 
 Delivery Management:
+
 Fields: order ID, delivery personnel ID, delivery status
 
 Rating and Reviews:
+
 Fields: user ID, restaurant ID, rating, review text
 
 Notification System:
+
 Fields: user ID, message, notification type
 
 Admin Dashboard:
+
 Fields: username, password, access level
 
 **ER DIAGRAM:**
