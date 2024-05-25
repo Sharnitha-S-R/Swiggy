@@ -6,16 +6,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ReviewService {
 
     @Autowired
-    private ReviewRepo reviewRepo;
+    private ReviewRepo reviewRepository;
 
     public Review saveReview(Review review) {
-        return reviewRepo.save(review);
+        return reviewRepository.save(review);
     }
 
+    public List<Review> getAllReviews() {
+        return reviewRepository.findAll();
+    }
+
+    public Review getReviewById(Long id) {
+        return reviewRepository.findById(id).orElse(null);
+    }
+
+    public void deleteReview(Long id) {
+        reviewRepository.deleteById(id);
+    }
 }
