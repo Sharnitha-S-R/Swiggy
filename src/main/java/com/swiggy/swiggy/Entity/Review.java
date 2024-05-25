@@ -21,13 +21,6 @@ public class Review {
     @Temporal(TemporalType.DATE)
     private Date reviewDate;
 
-    @ManyToOne
-    @JoinColumn(name = "id")
-    private User user;
-
-    @ManyToOne
-    @JoinColumn(name = "restaurant_id")
-    private Restaurant restaurant;
 
 
 
