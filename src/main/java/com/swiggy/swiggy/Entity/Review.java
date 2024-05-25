@@ -2,7 +2,7 @@ package com.swiggy.swiggy.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
+
 
 
 @Entity
@@ -18,8 +18,7 @@ public class Review {
     private Long reviewId;
     private Float rating;
     private String comment;
-    @Temporal(TemporalType.DATE)
-    private Date reviewDate;
+
 
 
 
