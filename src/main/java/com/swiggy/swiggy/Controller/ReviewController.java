@@ -19,18 +19,5 @@ public class ReviewController {
         return reviewService.saveReview(review);
     }
 
-    @GetMapping
-    public List<Review> getAllReviews() {
-        return reviewService.getAllReviews();
-    }
 
-    @GetMapping("/{id}")
-    public Review getReviewById(@PathVariable Long id) {
-        return reviewService.getReviewById(id);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteReview(@PathVariable Long id) {
-        reviewService.deleteReview(id);
-    }
 }
