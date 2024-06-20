@@ -66,11 +66,8 @@ Rating and Reviews:
 
 Fields: user ID, restaurant ID, rating, review text
 
-Promotion:
 
-Fields: user ID, message, promotion type
 
 
 
 **ER DIAGRAM:**
-![WhatsApp Image 2024-01-05 at 21 18 34_8720803d](https://github.com/Sharnitha-S-R/Swiggy/assets/107667064/6e15e6b4-5864-4695-8646-b42191c78c13)
