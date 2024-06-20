@@ -1,7 +1,9 @@
 package com.swiggy.swiggy.Entity;
+import com.swiggy.swiggy.Enum.Role;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Data
@@ -12,22 +14,32 @@ import java.time.LocalDateTime;
 @Setter
     public class User {
         @Id
-        @Column(name="ID")
-        @GeneratedValue
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "ID")
         private int id;
 
         @Column(name="USER_NAME")
         private String username;
+
         @Column(name="EMAIL")
         private String email;
+
         @Column(name="PASSWORD")
         private String password;
-        @Column(name="last_logout")
-        private LocalDateTime lastLogout;
-        public void setLastLogout(LocalDateTime lastLogout) {
-            this.lastLogout = lastLogout;
-        }
 
-    }
+        @Enumerated(EnumType.STRING)
+        @Column(name="ROLE")
+        private Role role;
+
+//        @Column(name="last_logout")
+//        private LocalDateTime lastLogout;
+
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private Set<Restaurant> restaurants;
+
+
+
+
+}
 
 

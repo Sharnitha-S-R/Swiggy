@@ -1,50 +1,46 @@
 package com.swiggy.swiggy.Controller;
+
 import com.swiggy.swiggy.Entity.Restaurant;
 import com.swiggy.swiggy.Service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/restaurants")
 public class RestaurantController {
 
     @Autowired
     private RestaurantService restaurantService;
 
-    @PostMapping("/add")
-    public ResponseEntity<Restaurant> addRestaurant(@RequestBody Restaurant restaurant) {
-        Restaurant savedRestaurant = restaurantService.saveRestaurant(restaurant);
-        return new ResponseEntity<>(savedRestaurant, HttpStatus.CREATED);
+    @PostMapping("/addRestaurant/{userId}")
+    private String addRestaurant(@PathVariable("userId") int userId, @RequestBody Restaurant restaurant)
+    {
+        restaurantService.addRestaurant(userId, restaurant);
+        return "Restaurant added successfully";
     }
 
-    @GetMapping("/all")
-    public ResponseEntity<List<Restaurant>> getAllRestaurants() {
-        List<Restaurant> restaurants = restaurantService.getAllRestaurants();
-        return new ResponseEntity<>(restaurants, HttpStatus.OK);
+    @DeleteMapping("/deleteRestaurant/{userId}/{restaurantId}")
+    public String deleteRestaurant(@PathVariable("userId") int userId, @PathVariable("restaurantId") long restaurantId){
+
+        restaurantService.deleteRestaurant(userId,restaurantId);
+        return "Restaurant deleted successfully";
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Restaurant> getRestaurantById(@PathVariable Integer id) {
-        Optional<Restaurant> restaurant = restaurantService.getRestaurantById(id);
-        return restaurant.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    @GetMapping("/getAllRestaurants/{userId}")
+    public List<Restaurant> getAllRestaurants(@PathVariable("userId") int userId){
+
+        return restaurantService.getAllRestaurants(userId);
+    }
+
+    @PutMapping("/updateRestaurant/{userId}/{restaurantId}")
+    public Restaurant updateRestaurant(@PathVariable("userId") int userId, @PathVariable("restaurantId") long restaurantId,@RequestBody Restaurant restaurant)
+    {
+        return restaurantService.updateRestaurant(userId, restaurantId, restaurant);
     }
 
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteRestaurant(@PathVariable String id) {
-        restaurantService.deleteRestaurant(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
 
 
 
 }
-
-
-

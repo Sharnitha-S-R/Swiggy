@@ -1,36 +1,51 @@
 package com.swiggy.swiggy.Entity;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.util.List;
 
 @Entity
-@Table(name = "orders")
-@Getter
-@Setter
+@Data
+@Table(name = "Orders")
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "restaurant_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Restaurant restaurant;
 
-    @ManyToMany
-    @JoinTable(
-            name = "order_items",
-            joinColumns = @JoinColumn(name = "order_id"),
-            inverseJoinColumns = @JoinColumn(name = "menu_item_id"))
-    private List<MenuItem> items;
+    @ManyToOne
+    @JoinColumn(name = "menu_item_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private MenuItem menuItem;
+
+    private int quantity;
+
+    private double price;
+
+    private String status;
+
+    private double totalAmount;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<Payment> payments;
+
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+    private Delivery delivery;
 
 
-    @Enumerated(EnumType.STRING)
-    private OrderStatus status;
 }
-

@@ -1,14 +1,19 @@
 package com.swiggy.swiggy.Entity;
 
-import javax.persistence.*;
-import java.util.Date;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
+@Data
+@Table(name = "reviews")
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Review {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long reviewId;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -18,11 +23,9 @@ public class Review {
     @JoinColumn(name = "restaurant_id", nullable = false)
     private Restaurant restaurant;
 
-    private Float rating;
-    private String comment;
+    @Column(name = "rating", nullable = false)
+    private int rating;
 
-    @Temporal(TemporalType.DATE)
-    private Date reviewDate;
-
-
+    @Column(name = "review", nullable = false)
+    private String review;
 }

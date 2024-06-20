@@ -1,29 +1,30 @@
 package com.swiggy.swiggy.Entity;
+
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
 @Entity
-@Table(name = "Delivery")
-@Getter
-@Setter
+@Data
+@Table(name = "Deliveries")
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Getter
+@Setter
 public class Delivery {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long deliveryId;
-    @ManyToOne
-    @JoinColumn(name = "orderId", referencedColumnName = "id")
-    private Order order;
+    private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "deliver_person_Id", referencedColumnName = "deliveryPersonId")
-    private DeliveryPerson deliveryPerson;
+    @Column(name = "delivery_person_name")
+    private String deliveryPersonName;
 
-    @Column(name = "DeliveryStatus")
+    @Column(name = "delivery_status")
     private String deliveryStatus;
+
+    @Column(name = "contact_number")
+    private String contactNumber;
+
+    @OneToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
 }

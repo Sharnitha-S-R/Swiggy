@@ -6,19 +6,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DeliveryService {
-    private final DeliveryRepo deliveryRepo;
 
     @Autowired
-    public DeliveryService(DeliveryRepo deliveryRepo) {
-        this.deliveryRepo = deliveryRepo;
-    }
+    private DeliveryRepo deliveryRepo;
 
-    public Delivery createDelivery(Delivery delivery) {
+    public Delivery createOrUpdateDelivery(Delivery delivery) {
         return deliveryRepo.save(delivery);
     }
 
-    // You can add other service methods as needed
+    public Optional<Delivery> getDeliveryById(Long id) {
+        return deliveryRepo.findById(id);
+    }
+
+    public List<Delivery> getAllDeliveries() {
+        return deliveryRepo.findAll();
+    }
+    public void deleteDelivery(Long id) {
+        deliveryRepo.deleteById(id);
+    }
 }

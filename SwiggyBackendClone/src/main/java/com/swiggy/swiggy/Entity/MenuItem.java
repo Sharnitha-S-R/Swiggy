@@ -1,10 +1,12 @@
 package com.swiggy.swiggy.Entity;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
 @Data
-@Table(name = "menu_items")
+@Table(name = "Menu_items")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -14,14 +16,12 @@ public class MenuItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String itemName;
+    private String name;
+    private String description;
     private double price;
-    private String category;
-    private String ingredients;
 
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id")
+    @JsonIgnore
     private Restaurant restaurant;
-
-}
+    }
